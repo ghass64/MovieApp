@@ -23,19 +23,27 @@ class ResultTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = querySearch
         ConfigureTableView()
         QueryForMovie(text: querySearch)
-
+        addPullToRefresh()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    //update the layout of the tableview to show under the navigation bar
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let rect = self.navigationController?.navigationBar.frame
+        let y = -1 * (rect?.origin.y)!
+        tableView.contentInset = UIEdgeInsetsMake(y+85.0, 0, 0, 0)
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+   
     // MARK: - Helper methods
     
     private func ConfigureTableView()
@@ -46,11 +54,40 @@ class ResultTableViewController: UITableViewController {
         
     }
     
-    func QueryForMovie(text:String)
+    private func addPullToRefresh() {
+        let animator = DefaultRefreshAnimator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        addPullToRefreshWithAnimator(animator: animator)
+    }
+    
+    
+    private func addPullToRefreshWithAnimator(animator: CustomPullToRefreshAnimator) {
+        tableView.fty.pullToRefresh.add(animator: animator) {
+            self.QueryForMovie(text: self.querySearch)
+        }
+    }
+    
+    private func UpdateRecentSearchCache()
+    {
+        // get the cached array and insert new query
+        var arr = CacheManager.getCachedList(type: .RecentSearch, count: -1) as! [String]
+        arr.append(querySearch)
+        
+        if CacheManager.cacheList(list: CacheManager.uniqueElementsFrom(array: arr), type: .RecentSearch)
+        {
+            print("Caching success")
+        }
+        else
+        {
+            print("Error: Cannot cache the file")
+        }
+        
+    }
+    
+    private func QueryForMovie(text:String)
     {
         
         ARSLineProgress.show()
-        let APIURLString = "http://api.themoviedb.org/3/search/movie?api_key=2696829a81b1b5827d515ff121700838&query=" + text
+        let APIURLString = "http://api.themoviedb.org/3/search/movie?api_key=2696829a81b1b5827d515ff121700838&query=" + text.encodeUrl()
         
         Alamofire.request(APIURLString).validate().responseJSON { response in
             switch response.result {
@@ -69,7 +106,10 @@ class ResultTableViewController: UITableViewController {
                     }
                     
                     self.tableView.reloadData()
+                    self.tableView.fty.pullToRefresh.end()
+                    
                     //add this query to cache file
+                    self.UpdateRecentSearchCache()
                     
                 }else
                 {
@@ -81,7 +121,8 @@ class ResultTableViewController: UITableViewController {
             case .failure(let error):
                 print(error)
                 ARSLineProgress.hide()
-                
+                self.tableView.fty.pullToRefresh.end()
+
                 var errorMessage = "General error message"
                 
                 if let data = response.data {
@@ -93,14 +134,14 @@ class ResultTableViewController: UITableViewController {
                 }
                 
                 print(errorMessage) //Contains General error message or specific.
-                self.ShowAlertWith(message: errorMessage, title: "Sorry",withResponse: false)
+                self.ShowAlertWith(message: errorMessage, title: "Sorry",withResponse: true)
             }
         }
         
     }
 
     //alert method
-    func ShowAlertWith(message: String , title:String ,withResponse:Bool) {
+    private func ShowAlertWith(message: String , title:String ,withResponse:Bool) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             if withResponse{

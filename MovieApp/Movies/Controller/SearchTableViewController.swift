@@ -20,12 +20,23 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // read the last 10 positive search queries from the cache
-        recentSearchArray = ["first","second","third"]
         configureSearchBarController()
+        
+        //configure tableview to remove all empty cells
+        tableView.tableFooterView =  UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // read the last 10 positive search queries from the cache
+        recentSearchArray = CacheManager.getCachedList(type: .RecentSearch, count: 10) as! [String]
+        
+        //reverse to show the latest data in the begining
+        recentSearchArray.reverse()
+        
+        tableView.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

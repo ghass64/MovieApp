@@ -8,10 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		608066FFA53CF6277D8BFF3F /* Pods_MovieAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD85430FC579C68901B69E16 /* Pods_MovieAppUITests.framework */; };
+		CE18056F1F17ABB100DBC372 /* ArrowRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805571F17ABB100DBC372 /* ArrowRefreshAnimator.swift */; };
+		CE1805701F17ABB100DBC372 /* CircleInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805591F17ABB100DBC372 /* CircleInfinityAnimator.swift */; };
+		CE1805711F17ABB100DBC372 /* CircleRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18055A1F17ABB100DBC372 /* CircleRefreshAnimator.swift */; };
+		CE1805721F17ABB100DBC372 /* DefaultInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18055C1F17ABB100DBC372 /* DefaultInfinityAnimator.swift */; };
+		CE1805731F17ABB100DBC372 /* DefaultRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18055D1F17ABB100DBC372 /* DefaultRefreshAnimator.swift */; };
+		CE1805741F17ABB100DBC372 /* GIFInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18055F1F17ABB100DBC372 /* GIFInfinityAnimator.swift */; };
+		CE1805751F17ABB100DBC372 /* GIFRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805601F17ABB100DBC372 /* GIFRefreshAnimator.swift */; };
+		CE1805761F17ABB100DBC372 /* NormalInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805621F17ABB100DBC372 /* NormalInfinityAnimator.swift */; };
+		CE1805771F17ABB100DBC372 /* NormalRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805631F17ABB100DBC372 /* NormalRefreshAnimator.swift */; };
+		CE1805781F17ABB100DBC372 /* SnakeInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805651F17ABB100DBC372 /* SnakeInfinityAnimator.swift */; };
+		CE1805791F17ABB100DBC372 /* SnakeRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805661F17ABB100DBC372 /* SnakeRefreshAnimator.swift */; };
+		CE18057A1F17ABB100DBC372 /* SparkInfinityAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805681F17ABB100DBC372 /* SparkInfinityAnimator.swift */; };
+		CE18057B1F17ABB100DBC372 /* SparkRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1805691F17ABB100DBC372 /* SparkRefreshAnimator.swift */; };
+		CE18057C1F17ABB100DBC372 /* InfiniteScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18056A1F17ABB100DBC372 /* InfiniteScroller.swift */; };
+		CE18057D1F17ABB100DBC372 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE18056C1F17ABB100DBC372 /* Info.plist */; };
+		CE18057E1F17ABB100DBC372 /* PullToRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18056D1F17ABB100DBC372 /* PullToRefresher.swift */; };
+		CE18057F1F17ABB100DBC372 /* UIScrollView+Infinity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18056E1F17ABB100DBC372 /* UIScrollView+Infinity.swift */; };
 		CE991B611F164E0900A7EC51 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE991B601F164E0900A7EC51 /* ResultTableViewController.swift */; };
 		CE991B631F164E9300A7EC51 /* ResultMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE991B621F164E9300A7EC51 /* ResultMovieCell.swift */; };
 		CE991B6A1F16595F00A7EC51 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE991B691F16595F00A7EC51 /* SearchTableViewController.swift */; };
 		CE991B6C1F166C4800A7EC51 /* MovieObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE991B6B1F166C4800A7EC51 /* MovieObj.swift */; };
+		CEE500AC1F17B8FE00C01911 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE500AB1F17B8FE00C01911 /* String.swift */; };
+		CEE500AE1F17BBC700C01911 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE500AD1F17BBC700C01911 /* CacheManager.swift */; };
 		CEE63DC91F151B9B00261349 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE63DBA1F151B9B00261349 /* LaunchScreen.storyboard */; };
 		CEE63DCA1F151B9B00261349 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE63DBC1F151B9B00261349 /* Main.storyboard */; };
 		CEE63DCB1F151B9B00261349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE63DBF1F151B9B00261349 /* Assets.xcassets */; };
@@ -37,10 +56,30 @@
 		9880F6E3BD84FA58F8791C08 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD85430FC579C68901B69E16 /* Pods_MovieAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8110739DBC4377A732F0B2E /* Pods-MovieAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppUITests/Pods-MovieAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE1805571F17ABB100DBC372 /* ArrowRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowRefreshAnimator.swift; sourceTree = "<group>"; };
+		CE1805591F17ABB100DBC372 /* CircleInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleInfinityAnimator.swift; sourceTree = "<group>"; };
+		CE18055A1F17ABB100DBC372 /* CircleRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRefreshAnimator.swift; sourceTree = "<group>"; };
+		CE18055C1F17ABB100DBC372 /* DefaultInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultInfinityAnimator.swift; sourceTree = "<group>"; };
+		CE18055D1F17ABB100DBC372 /* DefaultRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultRefreshAnimator.swift; sourceTree = "<group>"; };
+		CE18055F1F17ABB100DBC372 /* GIFInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFInfinityAnimator.swift; sourceTree = "<group>"; };
+		CE1805601F17ABB100DBC372 /* GIFRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFRefreshAnimator.swift; sourceTree = "<group>"; };
+		CE1805621F17ABB100DBC372 /* NormalInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalInfinityAnimator.swift; sourceTree = "<group>"; };
+		CE1805631F17ABB100DBC372 /* NormalRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalRefreshAnimator.swift; sourceTree = "<group>"; };
+		CE1805651F17ABB100DBC372 /* SnakeInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeInfinityAnimator.swift; sourceTree = "<group>"; };
+		CE1805661F17ABB100DBC372 /* SnakeRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeRefreshAnimator.swift; sourceTree = "<group>"; };
+		CE1805681F17ABB100DBC372 /* SparkInfinityAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkInfinityAnimator.swift; sourceTree = "<group>"; };
+		CE1805691F17ABB100DBC372 /* SparkRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkRefreshAnimator.swift; sourceTree = "<group>"; };
+		CE18056A1F17ABB100DBC372 /* InfiniteScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScroller.swift; sourceTree = "<group>"; };
+		CE18056B1F17ABB100DBC372 /* Infinity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Infinity.h; sourceTree = "<group>"; };
+		CE18056C1F17ABB100DBC372 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE18056D1F17ABB100DBC372 /* PullToRefresher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresher.swift; sourceTree = "<group>"; };
+		CE18056E1F17ABB100DBC372 /* UIScrollView+Infinity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Infinity.swift"; sourceTree = "<group>"; };
 		CE991B601F164E0900A7EC51 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		CE991B621F164E9300A7EC51 /* ResultMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultMovieCell.swift; sourceTree = "<group>"; };
 		CE991B691F16595F00A7EC51 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		CE991B6B1F166C4800A7EC51 /* MovieObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieObj.swift; sourceTree = "<group>"; };
+		CEE500AB1F17B8FE00C01911 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		CEE500AD1F17BBC700C01911 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		CEE63D961F151A8200261349 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE63DBB1F151B9B00261349 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEE63DBD1F151B9B00261349 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +120,95 @@
 				C8110739DBC4377A732F0B2E /* Pods-MovieAppUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CE1805541F17ABB100DBC372 /* Infinity */ = {
+			isa = PBXGroup;
+			children = (
+				CE1805551F17ABB100DBC372 /* controls */,
+				CE18056A1F17ABB100DBC372 /* InfiniteScroller.swift */,
+				CE18056B1F17ABB100DBC372 /* Infinity.h */,
+				CE18056C1F17ABB100DBC372 /* Info.plist */,
+				CE18056D1F17ABB100DBC372 /* PullToRefresher.swift */,
+				CE18056E1F17ABB100DBC372 /* UIScrollView+Infinity.swift */,
+			);
+			path = Infinity;
+			sourceTree = "<group>";
+		};
+		CE1805551F17ABB100DBC372 /* controls */ = {
+			isa = PBXGroup;
+			children = (
+				CE1805561F17ABB100DBC372 /* arrow */,
+				CE1805581F17ABB100DBC372 /* circle */,
+				CE18055B1F17ABB100DBC372 /* default */,
+				CE18055E1F17ABB100DBC372 /* gif */,
+				CE1805611F17ABB100DBC372 /* normal */,
+				CE1805641F17ABB100DBC372 /* snake */,
+				CE1805671F17ABB100DBC372 /* spark */,
+			);
+			path = controls;
+			sourceTree = "<group>";
+		};
+		CE1805561F17ABB100DBC372 /* arrow */ = {
+			isa = PBXGroup;
+			children = (
+				CE1805571F17ABB100DBC372 /* ArrowRefreshAnimator.swift */,
+			);
+			path = arrow;
+			sourceTree = "<group>";
+		};
+		CE1805581F17ABB100DBC372 /* circle */ = {
+			isa = PBXGroup;
+			children = (
+				CE1805591F17ABB100DBC372 /* CircleInfinityAnimator.swift */,
+				CE18055A1F17ABB100DBC372 /* CircleRefreshAnimator.swift */,
+			);
+			path = circle;
+			sourceTree = "<group>";
+		};
+		CE18055B1F17ABB100DBC372 /* default */ = {
+			isa = PBXGroup;
+			children = (
+				CE18055C1F17ABB100DBC372 /* DefaultInfinityAnimator.swift */,
+				CE18055D1F17ABB100DBC372 /* DefaultRefreshAnimator.swift */,
+			);
+			path = default;
+			sourceTree = "<group>";
+		};
+		CE18055E1F17ABB100DBC372 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				CE18055F1F17ABB100DBC372 /* GIFInfinityAnimator.swift */,
+				CE1805601F17ABB100DBC372 /* GIFRefreshAnimator.swift */,
+			);
+			path = gif;
+			sourceTree = "<group>";
+		};
+		CE1805611F17ABB100DBC372 /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				CE1805621F17ABB100DBC372 /* NormalInfinityAnimator.swift */,
+				CE1805631F17ABB100DBC372 /* NormalRefreshAnimator.swift */,
+			);
+			path = normal;
+			sourceTree = "<group>";
+		};
+		CE1805641F17ABB100DBC372 /* snake */ = {
+			isa = PBXGroup;
+			children = (
+				CE1805651F17ABB100DBC372 /* SnakeInfinityAnimator.swift */,
+				CE1805661F17ABB100DBC372 /* SnakeRefreshAnimator.swift */,
+			);
+			path = snake;
+			sourceTree = "<group>";
+		};
+		CE1805671F17ABB100DBC372 /* spark */ = {
+			isa = PBXGroup;
+			children = (
+				CE1805681F17ABB100DBC372 /* SparkInfinityAnimator.swift */,
+				CE1805691F17ABB100DBC372 /* SparkRefreshAnimator.swift */,
+			);
+			path = spark;
 			sourceTree = "<group>";
 		};
 		CEE63D8D1F151A8200261349 = {
@@ -137,6 +265,8 @@
 		CEE63DC01F151B9B00261349 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CEE500AD1F17BBC700C01911 /* CacheManager.swift */,
+				CE1805541F17ABB100DBC372 /* Infinity */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -144,6 +274,7 @@
 		CEE63DC11F151B9B00261349 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CEE500AB1F17B8FE00C01911 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE18057D1F17ABB100DBC372 /* Info.plist in Resources */,
 				CEE63DCA1F151B9B00261349 /* Main.storyboard in Resources */,
 				CEE63DC91F151B9B00261349 /* LaunchScreen.storyboard in Resources */,
 				CEE63DCB1F151B9B00261349 /* Assets.xcassets in Resources */,
@@ -413,11 +545,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE18057F1F17ABB100DBC372 /* UIScrollView+Infinity.swift in Sources */,
+				CE18057C1F17ABB100DBC372 /* InfiniteScroller.swift in Sources */,
 				CEE63DCD1F151B9B00261349 /* AppDelegate.swift in Sources */,
+				CE1805791F17ABB100DBC372 /* SnakeRefreshAnimator.swift in Sources */,
 				CE991B611F164E0900A7EC51 /* ResultTableViewController.swift in Sources */,
+				CE1805711F17ABB100DBC372 /* CircleRefreshAnimator.swift in Sources */,
+				CEE500AE1F17BBC700C01911 /* CacheManager.swift in Sources */,
+				CE18057B1F17ABB100DBC372 /* SparkRefreshAnimator.swift in Sources */,
+				CE1805771F17ABB100DBC372 /* NormalRefreshAnimator.swift in Sources */,
+				CE1805751F17ABB100DBC372 /* GIFRefreshAnimator.swift in Sources */,
 				CE991B631F164E9300A7EC51 /* ResultMovieCell.swift in Sources */,
+				CE1805731F17ABB100DBC372 /* DefaultRefreshAnimator.swift in Sources */,
+				CE18057E1F17ABB100DBC372 /* PullToRefresher.swift in Sources */,
+				CEE500AC1F17B8FE00C01911 /* String.swift in Sources */,
+				CE1805761F17ABB100DBC372 /* NormalInfinityAnimator.swift in Sources */,
+				CE1805781F17ABB100DBC372 /* SnakeInfinityAnimator.swift in Sources */,
+				CE1805721F17ABB100DBC372 /* DefaultInfinityAnimator.swift in Sources */,
+				CE1805701F17ABB100DBC372 /* CircleInfinityAnimator.swift in Sources */,
 				CE991B6A1F16595F00A7EC51 /* SearchTableViewController.swift in Sources */,
+				CE18056F1F17ABB100DBC372 /* ArrowRefreshAnimator.swift in Sources */,
+				CE18057A1F17ABB100DBC372 /* SparkInfinityAnimator.swift in Sources */,
 				CE991B6C1F166C4800A7EC51 /* MovieObj.swift in Sources */,
+				CE1805741F17ABB100DBC372 /* GIFInfinityAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
