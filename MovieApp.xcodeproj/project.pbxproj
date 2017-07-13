@@ -265,6 +265,7 @@
 				TargetAttributes = {
 					CEE63D951F151A8200261349 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = NG9767362J;
 						ProvisioningStyle = Automatic;
 					};
 					CEE63DD11F15200600261349 = {
@@ -557,7 +558,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NG9767362J;
 				INFOPLIST_FILE = MovieApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hawish.MovieApp;
@@ -572,7 +573,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NG9767362J;
 				INFOPLIST_FILE = MovieApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hawish.MovieApp;

@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import ARSLineProgress
+import SDWebImage
 
 class ResultTableViewController: UITableViewController {
 
@@ -22,12 +23,13 @@ class ResultTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ConfigureTableView()
+        QueryForMovie(text: querySearch)
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        QueryForMovie(text: querySearch)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,6 +37,15 @@ class ResultTableViewController: UITableViewController {
     }
     
     // MARK: - Helper methods
+    
+    private func ConfigureTableView()
+    {
+        //set the height of the cell to be dynamic
+        tableView.estimatedRowHeight = 158.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+    }
+    
     func QueryForMovie(text:String)
     {
         
@@ -113,6 +124,9 @@ class ResultTableViewController: UITableViewController {
         return ResultMovieArray.count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension;
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultMovieCell", for: indexPath) as! ResultMovieCell
@@ -121,7 +135,10 @@ class ResultTableViewController: UITableViewController {
         // Configure the cell...
 
         let Obj : MovieObj = ResultMovieArray[indexPath.row]
-        cell.textLabel?.text = Obj.movieName
+        cell.movieNameLabel?.text = Obj.movieName
+        cell.movieReleaseLabel.text = Obj.releaseDate
+        cell.movieOverviewLabel.text = Obj.movieOverview
+        cell.moviePosterImage.sd_setImage(with: URL(string: Obj.moviePoster))
         
         return cell
     }

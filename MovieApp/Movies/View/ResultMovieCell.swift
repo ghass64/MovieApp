@@ -10,6 +10,10 @@ import UIKit
 
 class ResultMovieCell: UITableViewCell {
 
+    @IBOutlet var moviePosterImage: UIImageView!
+    @IBOutlet var movieNameLabel: UILabel!
+    @IBOutlet var movieReleaseLabel: UILabel!
+    @IBOutlet var movieOverviewLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +24,5 @@ class ResultMovieCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

@@ -25,8 +25,10 @@ class MovieObj: NSObject,NSCoding{
     
     func initMovieWith(dict:JSON) -> MovieObj {
         let Obj : MovieObj = MovieObj()
-        let posterPath = dict["poster_path"].string!
-        Obj.moviePoster = String(format:"http://image.tmdb.org/t/p/w92%@",posterPath)
+        if dict["poster_path"].string != nil {
+            let posterPath = dict["poster_path"].string!
+            Obj.moviePoster = String(format:"http://image.tmdb.org/t/p/w185%@",posterPath)
+        }
 
         Obj.movieName = dict["title"].string!
         Obj.releaseDate = dict["release_date"].string!

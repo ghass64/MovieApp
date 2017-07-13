@@ -102,6 +102,7 @@ class SearchTableViewController: UITableViewController {
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //query from the choosed in recent list and go to result page
+        recentSearchController.searchBar.resignFirstResponder()
         QueryForMovie(text:recentSearchArray[indexPath.row])
     }
     
