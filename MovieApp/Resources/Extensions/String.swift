@@ -1,9 +1,9 @@
 //
 //  StringExtension.swift
-//  SlideMenuControllerSwift
+//  MovieApp
 //
-//  Created by Yuji Hato on 1/22/15.
-//  Copyright (c) 2015 Yuji Hato. All rights reserved.
+//  Created by Ghassan ALMarei on 7/12/17.
+//  Copyright © 2017 Hawish Softwares. All rights reserved.
 //
 
 import Foundation

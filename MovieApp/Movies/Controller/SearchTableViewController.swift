@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class SearchTableViewController: UITableViewController {
-
+    
     //Properties
     var recentSearchController:UISearchController!
     
@@ -20,15 +19,16 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //configure searchbar controller
         configureSearchBarController()
         
         //configure tableview to remove all empty cells
         tableView.tableFooterView =  UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         // read the last 10 positive search queries from the cache
         recentSearchArray = CacheManager.getCachedList(type: .RecentSearch, count: 10) as! [String]
         
@@ -53,7 +53,7 @@ class SearchTableViewController: UITableViewController {
         
         // The searchbar will connect delegate to resultTableViewController
         recentSearchController.searchBar.delegate = self
-
+        
         // Search controller will not replace navigation bar when searching
         recentSearchController.hidesNavigationBarDuringPresentation = false
         
@@ -71,21 +71,24 @@ class SearchTableViewController: UITableViewController {
         
     }
     
+    //method to save the query and go to result page
     func QueryForMovie(text:String)
     {
         querySearch = text
-        performSegue(withIdentifier: "ShowResultPage", sender: self)
+        performSegue(withIdentifier: "ShowResultPage", sender: self)  // call the sague 'ShowResultPage'
+        
     }
     
     
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //chech if the search box is focused
         if recentSearchController.isActive {
             return recentSearchArray.count
         }
@@ -93,7 +96,7 @@ class SearchTableViewController: UITableViewController {
             return 0
         }
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recentSearchCell", for: indexPath)
@@ -110,17 +113,18 @@ class SearchTableViewController: UITableViewController {
         
         return cell
     }
- 
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //query from the choosed in recent list and go to result page
-        recentSearchController.searchBar.resignFirstResponder()
+        
+        recentSearchController.searchBar.resignFirstResponder() // hide the keyboard before call the method
         QueryForMovie(text:recentSearchArray[indexPath.row])
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -128,11 +132,9 @@ class SearchTableViewController: UITableViewController {
             let dest = segue.destination as! ResultTableViewController
             dest.querySearch = querySearch
         }
-
-        
     }
- 
-
+    
+    
 }
 
 extension SearchTableViewController: UISearchResultsUpdating {
@@ -141,7 +143,7 @@ extension SearchTableViewController: UISearchResultsUpdating {
         //update the table to show the recent searchs & in case we want to filter it will be from here
         tableView.reloadData()
     }
-
+    
 }
 
 extension SearchTableViewController: UISearchBarDelegate {

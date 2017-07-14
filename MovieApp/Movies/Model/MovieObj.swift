@@ -29,7 +29,7 @@ class MovieObj: NSObject,NSCoding{
             let posterPath = dict["poster_path"].string!
             Obj.moviePoster = String(format:"http://image.tmdb.org/t/p/w185%@",posterPath)
         }
-
+        
         Obj.movieName = dict["title"].string!
         Obj.releaseDate = dict["release_date"].string!
         Obj.movieOverview = dict["overview"].string!
