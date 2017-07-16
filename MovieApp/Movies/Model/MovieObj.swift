@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
 
 class MovieObj: NSObject,NSCoding{
     
@@ -23,6 +24,8 @@ class MovieObj: NSObject,NSCoding{
         self.movieOverview = ""
     }
     
+    
+    //parse data from JSON into MovieObj
     func initMovieWith(dict:JSON) -> MovieObj {
         let Obj : MovieObj = MovieObj()
         if dict["poster_path"].string != nil {
@@ -36,6 +39,61 @@ class MovieObj: NSObject,NSCoding{
         
         return Obj
     }
+    
+    
+    func SearchForMovieOnline(query:String,completion:@escaping (_ searchResultArr:[MovieObj],_ status:Bool,_ error:String) -> ()) {
+        var ResultMovieArray : [MovieObj] = []
+        var errorMessage : String = ""
+        
+        //use encodeUrl to add percent encoding for the text
+        let APIURLString = "http://api.themoviedb.org/3/search/movie?api_key=2696829a81b1b5827d515ff121700838&query=" + query.encodeUrl()
+        
+        Alamofire.request(APIURLString).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                var json = JSON(value) //convert the data recieved into JSON
+                
+                let resultsJsonArr = json["results"].array!  //get the data needed as array from 'results'
+                
+                //check if the data returning results or not
+                if resultsJsonArr.count > 0
+                {
+                    //convert the JSON data into 'MovieObj' objects and append them to array
+                    for objDict in resultsJsonArr
+                    {
+                        var obj : MovieObj = MovieObj()
+                        obj = self.initMovieWith(dict: objDict)
+                        ResultMovieArray.append(obj)
+                    }
+                    
+                    completion(ResultMovieArray,true,errorMessage)
+                }else
+                {
+                    errorMessage = "There is no result for this search"
+                    completion(ResultMovieArray,false,errorMessage)
+                }
+                
+                
+            case .failure(let error):
+                //at failure show a general error message alert
+                print(error)
+                errorMessage = "General error message"
+                
+                if let data = response.data {
+                    let responseJSON = JSON(data: data)
+                    let message: String = responseJSON["message"].stringValue
+                    if !message.isEmpty {
+                        errorMessage = message
+                    }
+                }
+                
+                print(errorMessage) //Contains General error message or specific.
+                completion(ResultMovieArray,false,errorMessage)
+            }
+        }
+    }
+    
+    
     
     // MARK: - NSCoding
     

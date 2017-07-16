@@ -11,11 +11,11 @@ import UIKit
 class SearchTableViewController: UITableViewController {
     
     //Properties
-    var recentSearchController:UISearchController!
+    private var recentSearchController:UISearchController!
     
     //Variables
-    var recentSearchArray : [String] = []
-    var querySearch : String = ""
+    private var recentSearchArray : [String] = []
+    private var querySearch : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +66,8 @@ class SearchTableViewController: UITableViewController {
         // Search bar will fit in size available.
         recentSearchController.searchBar.sizeToFit()
         
+        recentSearchController.searchBar.placeholder = "Search for movie"
+        
         // Search bar is placed in title of Navigation controller.
         self.navigationItem.titleView = recentSearchController.searchBar
         
@@ -78,8 +80,6 @@ class SearchTableViewController: UITableViewController {
         performSegue(withIdentifier: "ShowResultPage", sender: self)  // call the sague 'ShowResultPage'
         
     }
-    
-    
     
     // MARK: - Table view data source
     

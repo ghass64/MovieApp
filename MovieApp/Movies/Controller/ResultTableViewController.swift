@@ -14,7 +14,7 @@ import ARSLineProgress
 class ResultTableViewController: UITableViewController {
     
     //Variables
-    var ResultMovieArray : [MovieObj] = []
+    private var ResultMovieArray : [MovieObj] = []
     var querySearch : String = ""
     
     override func viewDidLoad() {
@@ -88,67 +88,30 @@ class ResultTableViewController: UITableViewController {
     //Method to call the webservice and get the data from server by using Alamofire library
     private func QueryForMovie(text:String)
     {
-        
         //show progress view
         ARSLineProgress.show()
-        
-        //use encodeUrl to add percent encoding for the text
-        let APIURLString = "http://api.themoviedb.org/3/search/movie?api_key=2696829a81b1b5827d515ff121700838&query=" + text.encodeUrl()
-        
-        Alamofire.request(APIURLString).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                var json = JSON(value) //convert the data recieved into JSON
+        let obj :MovieObj = MovieObj()
+        obj.SearchForMovieOnline(query: text) { (arr, success, error) in
+            if success
+            {
+                self.ResultMovieArray = arr
                 
-                let resultsJsonArr = json["results"].array!  //get the data needed as array from 'results'
-                
-                //check if the data returning results or not
-                if resultsJsonArr.count > 0
-                {
-                    //convert the JSON data into 'MovieObj' objects and append them to array
-                    for objDict in resultsJsonArr
-                    {
-                        var obj :MovieObj = MovieObj()
-                        obj = obj.initMovieWith(dict: objDict)
-                        self.ResultMovieArray.append(obj)
-                    }
-                    
-                    //reload the table to show the data and end refereshing
-                    self.tableView.reloadData()
-                    self.tableView.refreshControl?.endRefreshing()
-                    
-                    //add this query to cache file
-                    self.UpdateRecentSearchCache()
-                    
-                }else
-                {
-                    //show alert and then go back if pressed ok
-                    self.ShowAlertWith(message: "There is no result for this search", title: "info", withResponse: true)
-                }
-                
-                //hide the progress view
-                ARSLineProgress.hide()
-                
-                
-            case .failure(let error):
-                //at failure show a general error message alert
-                print(error)
-                ARSLineProgress.hide()
+                //reload the table to show the data and end refereshing
+                self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
                 
-                var errorMessage = "General error message"
-                
-                if let data = response.data {
-                    let responseJSON = JSON(data: data)
-                    let message: String = responseJSON["message"].stringValue
-                    if !message.isEmpty {
-                        errorMessage = message
-                    }
-                }
-                
-                print(errorMessage) //Contains General error message or specific.
-                self.ShowAlertWith(message: errorMessage, title: "Sorry",withResponse: true)
+                //add this query to cache file
+                self.UpdateRecentSearchCache()
+
             }
+            else
+            {
+                //show alert and then go back if pressed ok
+                self.ShowAlertWith(message: error, title: "info", withResponse: true)
+
+            }
+            //hide the progress view
+            ARSLineProgress.hide()
         }
         
     }

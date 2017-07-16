@@ -10,7 +10,6 @@ import UIKit
 
 public enum CacheFile: String {
     case RecentSearch = "RecentSearch"
-    case SavedSearch = "SavedSearch"
 }
 
 
@@ -123,10 +122,9 @@ class CacheManager: NSObject {
     class func clearAllCached()
     {
         clearCachedList(type: .RecentSearch)
-        clearCachedList(type: .SavedSearch)
     }
     
-    //Method to remove the dupliacte items in the array of Strings
+    //Method to remove the duplicate items in the array of Strings
     class func uniqueElementsFrom(array: [String]) -> [String] {
         var set = Set<String>()
         let result = array.filter {
