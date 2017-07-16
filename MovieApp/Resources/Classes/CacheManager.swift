@@ -1,21 +1,21 @@
 //
 //  CacheManager.swift
-//  aleef
+//  MovieApp
 //
-//  Created by Ghassan ALMarei on 10/30/16.
-//  Copyright © 2016 Dubai Municipality. All rights reserved.
+//  Created by Ghassan ALMarei on 7/12/17.
+//  Copyright © 2017 Hawish Softwares. All rights reserved.
 //
 
 import UIKit
 
 public enum CacheFile: String {
     case RecentSearch = "RecentSearch"
-    case SavedSearch = "SavedSearch"
 }
 
 
 class CacheManager: NSObject {
     
+    //insert the array of any kind into cache with the name of the cache
     class func cacheList(list:[Any],type:CacheFile) -> Bool {
         //1- get the file name same as request url
         let cacheFileName = getCacheFileNameForList(type: type.rawValue)
@@ -45,11 +45,7 @@ class CacheManager: NSObject {
     {
         //the file name is the string of listing URL without the page number and page size
         let fullURLString = "/" + type
-        
         let correctURLstring = fullURLString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        
-        //let illegalFileNameCharacters : NSCharacterSet = NSCharacterSet(charactersIn: "/\\?%*|\"<>:")
-        
         let str = correctURLstring?.components(separatedBy: "/\\?%*|\"<>:")
         return (str?.joined(separator: ""))!
         
@@ -74,7 +70,6 @@ class CacheManager: NSObject {
         var archiveData : Data
         do {
             archiveData = try NSData(contentsOf: URL(fileURLWithPath: cacheFilePath), options: NSData.ReadingOptions()) as Data
-            print(archiveData)
         } catch {
             print(error)
             return []
@@ -84,6 +79,9 @@ class CacheManager: NSObject {
         
         let dataRaw = dataDict[type.rawValue]
         let resultArray = dataRaw as! [Any]
+        
+        //check if the returned array is more than the count , to show the exact count ,, else will return all
+        //also check if the count is -1 , which means to return all array
         if count != -1 && resultArray.count > count {
             
             let arraySlice = resultArray.suffix(count)
@@ -124,9 +122,9 @@ class CacheManager: NSObject {
     class func clearAllCached()
     {
         clearCachedList(type: .RecentSearch)
-        clearCachedList(type: .SavedSearch)
     }
     
+    //Method to remove the duplicate items in the array of Strings
     class func uniqueElementsFrom(array: [String]) -> [String] {
         var set = Set<String>()
         let result = array.filter {

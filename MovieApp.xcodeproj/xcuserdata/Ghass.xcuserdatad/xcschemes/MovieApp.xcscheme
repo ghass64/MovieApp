@@ -47,6 +47,11 @@
                BlueprintName = "MovieAppUITests"
                ReferencedContainer = "container:MovieApp.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "MovieAppUITests/testExample()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
