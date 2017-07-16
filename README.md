@@ -1,5 +1,5 @@
 # MovieApp
-This app is written in swift 3.1 allows users to query movies by name fetching from the webservice http://api.themoviedb.org
+This app is written in swift allows users to query movies by name fetching from the webservice http://api.themoviedb.org
 it uses these libraries :
 1. Alamorfire
 2. SwiftyJSON
