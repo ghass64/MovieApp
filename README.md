@@ -1,10 +1,10 @@
 # MovieApp
 This app is written in swift 3.1 allows users to query movies by name fetching from the webservice http://api.themoviedb.org
 it uses these libraries :
-1.Alamorfire
-2.SwiftyJSON
-3.SDWebImage
-4.ARSLineProgress
+1. Alamorfire
+2. SwiftyJSON
+3. SDWebImage
+4. ARSLineProgress
 
 
 It contains a : 
@@ -17,9 +17,9 @@ It contains a :
 7.MovieAppUITest : it uses ui test to test the search and the pick from the suggestions in the table
 
 Methods:
-1.configureSearchBarController() : initialize and configure searchbar controller
-2.QueryForMovie(text:String) : method to save the query and go to result page and to query the text from the webservice
-3.ConfigureTableView() : Configure the tableview so the cells will be dynamic in height
-4.addPullToRefresh() : add pull to refresh mechanism to the tableview
-5.handleRefresh() : method to call after pull to referesh to update the list
-6.UpdateRecentSearchCache() : Method to insert the query to suggestions or update it through the CacheManager
+1. configureSearchBarController() : initialize and configure searchbar controller
+2. QueryForMovie(text:String) : method to save the query and go to result page and to query the text from the webservice
+3. ConfigureTableView() : Configure the tableview so the cells will be dynamic in height
+4. addPullToRefresh() : add pull to refresh mechanism to the tableview
+5. handleRefresh() : method to call after pull to referesh to update the list
+6. UpdateRecentSearchCache() : Method to insert the query to suggestions or update it through the CacheManager
