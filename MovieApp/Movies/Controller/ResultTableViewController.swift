@@ -14,7 +14,8 @@ import ARSLineProgress
 class ResultTableViewController: UITableViewController {
     
     //Variables
-    private var ResultMovieArray : [MovieObj] = []
+    var ResultMovieArray : [MovieObj] = []
+    private var movie : MovieObj = MovieObj()
     var querySearch : String = ""
     
     override func viewDidLoad() {
@@ -23,12 +24,14 @@ class ResultTableViewController: UITableViewController {
         //add the query text to the title of controller
         self.title = querySearch
         
+        //connect the delegate of movieobj to recieve messages from
+        movie.delegate = self
+        
         //Configure the tableview
         ConfigureTableView()
         
         //call this method to query the text from the webservice
         QueryForMovie(text: querySearch)
-        
         
     }
     
@@ -66,7 +69,7 @@ class ResultTableViewController: UITableViewController {
     
     
     //Method to insert the query to suggestions or update it
-    private func UpdateRecentSearchCache()
+    func UpdateRecentSearchCache()
     {
         // get the cached array and insert new query
         var arr = CacheManager.getCachedList(type: .RecentSearch, count: -1) as! [String]
@@ -90,34 +93,12 @@ class ResultTableViewController: UITableViewController {
     {
         //show progress view
         ARSLineProgress.show()
-        let obj :MovieObj = MovieObj()
-        obj.SearchForMovieOnline(query: text) { (arr, success, error) in
-            if success
-            {
-                self.ResultMovieArray = arr
-                
-                //reload the table to show the data and end refereshing
-                self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
-                
-                //add this query to cache file
-                self.UpdateRecentSearchCache()
-
-            }
-            else
-            {
-                //show alert and then go back if pressed ok
-                self.ShowAlertWith(message: error, title: "info", withResponse: true)
-
-            }
-            //hide the progress view
-            ARSLineProgress.hide()
-        }
+        movie.SearchForMovieOnline(query: text)
         
     }
     
     //alert method
-    private func ShowAlertWith(message: String , title:String ,withResponse:Bool) {
+    func ShowAlertWith(message: String , title:String ,withResponse:Bool) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             if withResponse{
@@ -154,5 +135,32 @@ class ResultTableViewController: UITableViewController {
         cell.SetMovieInCell(movie: Obj)
         
         return cell
+    }
+}
+
+extension ResultTableViewController:MovieDataDelegate
+{
+    func queryDidSuccess(_ searchResultArr: [MovieObj], _ error: String) {
+        
+        self.ResultMovieArray = searchResultArr
+        
+        //reload the table to show the data and end refereshing
+        self.tableView.reloadData()
+        self.tableView.refreshControl?.endRefreshing()
+        
+        //add this query to cache file
+        self.UpdateRecentSearchCache()
+        
+        //hide the progress view
+        ARSLineProgress.hide()
+    }
+    
+    func queryDidFailed(_ searchResultArr: [MovieObj], _ error: String) {
+        //show alert and then go back if pressed ok
+        self.ShowAlertWith(message: error, title: "info", withResponse: true)
+        
+        //hide the progress view
+        ARSLineProgress.hide()
+        
     }
 }

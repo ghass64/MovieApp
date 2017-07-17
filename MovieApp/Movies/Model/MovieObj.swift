@@ -10,12 +10,19 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
+protocol MovieDataDelegate: class {
+    func queryDidSuccess(_ searchResultArr:[MovieObj],_ error:String)
+    func queryDidFailed(_ searchResultArr:[MovieObj],_ error:String)
+}
+
 class MovieObj: NSObject,NSCoding{
     
     var moviePoster : String
     var movieName : String
     var releaseDate : String
     var movieOverview : String
+    
+    weak var delegate : MovieDataDelegate?
     
     override init() {
         self.moviePoster = ""
@@ -41,7 +48,7 @@ class MovieObj: NSObject,NSCoding{
     }
     
     
-    func SearchForMovieOnline(query:String,completion:@escaping (_ searchResultArr:[MovieObj],_ status:Bool,_ error:String) -> ()) {
+    func SearchForMovieOnline(query:String) {
         var ResultMovieArray : [MovieObj] = []
         var errorMessage : String = ""
         
@@ -66,11 +73,13 @@ class MovieObj: NSObject,NSCoding{
                         ResultMovieArray.append(obj)
                     }
                     
-                    completion(ResultMovieArray,true,errorMessage)
+                    //completion(ResultMovieArray,true,errorMessage)
+                    self.delegate?.queryDidSuccess(ResultMovieArray, errorMessage)
                 }else
                 {
                     errorMessage = "There is no result for this search"
-                    completion(ResultMovieArray,false,errorMessage)
+                    //completion(ResultMovieArray,false,errorMessage)
+                    self.delegate?.queryDidFailed(ResultMovieArray, errorMessage)
                 }
                 
                 
@@ -88,7 +97,9 @@ class MovieObj: NSObject,NSCoding{
                 }
                 
                 print(errorMessage) //Contains General error message or specific.
-                completion(ResultMovieArray,false,errorMessage)
+                //completion(ResultMovieArray,false,errorMessage)
+                self.delegate?.queryDidFailed(ResultMovieArray, errorMessage)
+
             }
         }
     }
