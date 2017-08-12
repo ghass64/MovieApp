@@ -4,20 +4,23 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - SwiftLint (0.20.1)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - ARSLineProgress
   - SDWebImage
+  - SwiftLint
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   ARSLineProgress: 44dd1ec9994a4ddea7767944ecb9001046ecd697
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 97c276865104d4dedff4d384e6c0b1b396b0a606
+PODFILE CHECKSUM: 464f5b6584b4767256984cf4a3b5922807f6ddc1
 
 COCOAPODS: 1.1.1

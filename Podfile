@@ -6,7 +6,7 @@ target 'MovieApp' do
   pod 'SwiftyJSON'
   pod 'ARSLineProgress'
   pod 'SDWebImage'
-
+  pod 'SwiftLint'
 
   target 'MovieAppUITests' do
     inherit! :search_paths
@@ -14,6 +14,8 @@ target 'MovieApp' do
   	pod 'SwiftyJSON'
   	pod 'ARSLineProgress'
   	pod 'SDWebImage'
+    pod 'SwiftLint'
+    
   end
 
 end
